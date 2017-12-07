@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main">
+	<children>
+      <Pane prefHeight="350.0" prefWidth="960.0">
+         <children>
+            <Label layoutX="154.0" layoutY="10.0" text="From:" />
+            <Label layoutX="337.0" layoutY="10.0" text="To:" />
+            <Label layoutX="19.0" layoutY="45.0" text="DATE" />
+            <DatePicker fx:id="dateFromDatePicker" layoutX="131.0" layoutY="40.0" prefHeight="30.0" prefWidth="147.0" />
+            <DatePicker fx:id="dateToDatePicker" layoutX="295.0" layoutY="40.0" prefHeight="30.0" prefWidth="147.0" />
+            <Label layoutX="21.0" layoutY="128.0" text="LONGITUDE" />
+            <TextField fx:id="longitudeMinText" layoutX="133.0" layoutY="123.0" prefHeight="30.0" prefWidth="92.0" />
+            <TextField fx:id="longitudeMaxText" layoutX="297.0" layoutY="123.0" prefHeight="30.0" prefWidth="92.0" />
+            <Label layoutX="21.0" layoutY="85.0" text="LATITUDE" />
+            <TextField fx:id="latitudeMaxText" layoutX="297.0" layoutY="80.0" prefHeight="30.0" prefWidth="92.0" />
+            <TextField fx:id="latitudeMinText" layoutX="133.0" layoutY="80.0" prefHeight="30.0" prefWidth="92.0" />
+            <Label layoutX="19.0" layoutY="164.0" text="DEPTH" />
+            <TextField fx:id="depthMaxText" layoutX="295.0" layoutY="159.0" prefHeight="30.0" prefWidth="92.0" />
+            <TextField fx:id="depthMinText" layoutX="131.0" layoutY="159.0" prefHeight="30.0" prefWidth="92.0" />
+            <Label layoutX="19.0" layoutY="206.0" text="MAGNITUDE" />
+            <TextField fx:id="magnitudeMaxText" layoutX="295.0" layoutY="201.0" prefHeight="30.0" prefWidth="92.0" />
+            <TextField fx:id="magnitudeMinText" layoutX="131.0" layoutY="201.0" prefHeight="30.0" prefWidth="92.0" />
+      		<Button fx:id="searchButton" layoutX="499.0" layoutY="201.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="30.0" prefWidth="103.0" text="Search" />
+         </children>
+      </Pane>
+		<TableView fx:id="table" prefHeight="500.0" prefWidth="200.0">
+			<columns>
+				<TableColumn fx:id="dateColumn" prefWidth="250.0" text="DATE" />
+				<TableColumn fx:id="latitudeColumn" prefWidth="100.0" text="Latitude" />
+				<TableColumn fx:id="longitudeColumn" prefWidth="100.0" text="Longitude" />
+				<TableColumn fx:id="depthColumn" prefWidth="75.0" text="Depth" />
+				<TableColumn fx:id="magnitudeColumn" prefWidth="100.0" text="Magnitude" />
+				<TableColumn fx:id="regionColumn" prefWidth="300.0" text="Region" />
+			</columns>
+		</TableView>
+	</children>
+</VBox>
