@@ -7,12 +7,17 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import bean.Earthquake;
-import bean.Filter;
+import controller.FilterLikeController;
 
-public class EarthquakeData_csv {
-	String dataSrc = "earthquakes.csv";
+public class Reader_Csv_Filter implements Reader{
+	private String dataSrc = "earthquakes.csv";
 
-	public ArrayList<Earthquake> getEarthquakeList(Filter filter) {
+	@Override
+	public ArrayList<Earthquake> getEarthquakeList() {
+		return null;
+	}
+
+	public ArrayList<Earthquake> getEarthquakeList(FilterLikeController filter) {
 		ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
 		try {
 			FileInputStream in = new FileInputStream(dataSrc);

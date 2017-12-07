@@ -1,5 +1,7 @@
 package bean;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.sql.Timestamp;
 
 public class Earthquake {
@@ -22,6 +24,9 @@ public class Earthquake {
 		this.depth = depth;
 		this.magnitude = magnitude;
 		this.region = region;
+	}
+	public SimpleStringProperty latitudeProperty(){
+		return new SimpleStringProperty(Float.toString(latitude));
 	}
 
 	public int getId() {

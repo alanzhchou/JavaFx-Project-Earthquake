@@ -11,13 +11,26 @@ public class EarthquakeSimple {
 	private SimpleStringProperty region;
 
 	public EarthquakeSimple(Earthquake earthquake) {
-		this.UTC_date=new SimpleStringProperty(earthquake.getUTC_date().toString());
-		this.latitude=new SimpleStringProperty(Float.toString(earthquake.getLatitude()));
-		this.longitude=new SimpleStringProperty(Float.toString(earthquake.getLongitude()));
-		this.depth=new SimpleStringProperty(Float.toString(earthquake.getDepth()));
-		this.magnitude=new SimpleStringProperty(Float.toString(earthquake.getMagnitude()));
-		this.region=new SimpleStringProperty(earthquake.getRegion());
+		this.UTC_date = new SimpleStringProperty(earthquake.getUTC_date().toString());
+		this.latitude = new SimpleStringProperty(Float.toString(earthquake.getLatitude()));
+		this.longitude = new SimpleStringProperty(Float.toString(earthquake.getLongitude()));
+		this.depth = new SimpleStringProperty(Float.toString(earthquake.getDepth()));
+		this.magnitude = new SimpleStringProperty(Float.toString(earthquake.getMagnitude()));
+		this.region = new SimpleStringProperty(earthquake.getRegion());
 	}
+
+	public float getMagnitude(){
+		return Float.valueOf(magnitude.getValue());
+	}
+
+	public float getLongitude(){
+		return Float.valueOf(longitude.getValue());
+	}
+
+	public float getLatitude(){
+		return Float.valueOf(latitude.getValue());
+	}
+
 
 	public SimpleStringProperty UTC_dateProperty() {
 		return UTC_date;
