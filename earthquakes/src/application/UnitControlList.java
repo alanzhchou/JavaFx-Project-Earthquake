@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,13 +18,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import bean.Earthquake;
-import bean.EarthquakeSimple;
 import controller.WholeFilterController;
 import dao.Reader_Csv_Filter;
 
 /**
  * Author ZH-AlanChou
- * Date: 2017/12/7.
+ * Date: 2017/12/7
  * Version 1.0
  */
 public class UnitControlList {
@@ -48,23 +44,25 @@ public class UnitControlList {
     @FXML
     private TextField depthMaxText;
     @FXML
-    private TextField magnitudeMinText;
+    private Slider magnitudeMinSd;
     @FXML
-    private TextField magnitudeMaxText;
+    private Slider magnitudeMaxSd;
     @FXML
-    private TableView<EarthquakeSimple> table;
+    private TableView<Earthquake> table;
     @FXML
-    private TableColumn<EarthquakeSimple, String> dateColumn;
+    private TableColumn<Earthquake, Integer> idColumn;
     @FXML
-    private TableColumn<EarthquakeSimple, String> latitudeColumn;
+    private TableColumn<Earthquake, Timestamp> dateColumn;
     @FXML
-    private TableColumn<EarthquakeSimple, String> longitudeColumn;
+    private TableColumn<Earthquake, Float> latitudeColumn;
     @FXML
-    private TableColumn<EarthquakeSimple, String> depthColumn;
+    private TableColumn<Earthquake, Float> longitudeColumn;
     @FXML
-    private TableColumn<EarthquakeSimple, String> magnitudeColumn;
+    private TableColumn<Earthquake, Float> depthColumn;
     @FXML
-    private TableColumn<EarthquakeSimple, String> regionColumn;
+    private TableColumn<Earthquake, Float> magnitudeColumn;
+    @FXML
+    private TableColumn<Earthquake, String> regionColumn;
     @FXML
     private StackPane stpMercator;
     @FXML
@@ -82,14 +80,14 @@ public class UnitControlList {
     private int eH;
 
 
-    static ObservableList<EarthquakeSimple> quakeList = FXCollections.observableArrayList();
+    static ObservableList<Earthquake> quakeList = FXCollections.observableArrayList();
     static WholeFilterController wholeFilter = new WholeFilterController();
     UnitInfo unitInfo;
 
     public void checkUnitInfo(){
         if (unitInfo == null){
             unitInfo = new UnitInfo(dateFromDatePicker,dateToDatePicker,latitudeMinText,latitudeMaxText,
-                    longitudeMinText,longitudeMaxText,depthMinText,depthMaxText,magnitudeMinText,magnitudeMaxText);
+                    longitudeMinText,longitudeMaxText,depthMinText,depthMaxText,magnitudeMinSd,magnitudeMaxSd);
             wmm = new WorldMap(imageMERCATOR.getImage(), WorldMap.Projection.MERCATOR, 180);
             wme = new WorldMap(imageEckertIV.getImage(), WorldMap.Projection.ECKERT_IV,180);
             mW = (int) imageMERCATOR.getImage().getWidth();
@@ -115,24 +113,21 @@ public class UnitControlList {
 
         quakeList.clear();
         for (Earthquake q : earthquakes) {
-            quakeList.add(new EarthquakeSimple(q));
+            quakeList.add(q);
         }
-        dateColumn.setCellValueFactory(new PropertyValueFactory<EarthquakeSimple, String>("UTC_date"));
-        latitudeColumn.setCellValueFactory(new PropertyValueFactory<EarthquakeSimple, String>("latitude"));
-        longitudeColumn.setCellValueFactory(new PropertyValueFactory<EarthquakeSimple, String>("longitude"));
-        depthColumn.setCellValueFactory(new PropertyValueFactory<EarthquakeSimple, String>("depth"));
-        magnitudeColumn.setCellValueFactory(new PropertyValueFactory<EarthquakeSimple, String>("magnitude"));
-        regionColumn.setCellValueFactory(new PropertyValueFactory<EarthquakeSimple, String>("region"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Integer>("id"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Timestamp>("UTC_date"));
+        latitudeColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Float>("latitude"));
+        longitudeColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Float>("longitude"));
+        depthColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Float>("depth"));
+        magnitudeColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Float>("magnitude"));
+        regionColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, String>("region"));
         table.setItems(quakeList);
     }
 
     private void refreshMaps() {
-        float magnitude;
-        int diameter;
-        int[] xy;
         ObservableList<Node> paneChildren;
 
-        // Remove existing canvases
         paneChildren = stpMercator.getChildren();
         if (paneChildren.size() > 1) {
             paneChildren.remove(1, paneChildren.size());
@@ -146,14 +141,17 @@ public class UnitControlList {
         GraphicsContext gcm = cvMercator.getGraphicsContext2D();
         Canvas cvEckert = new Canvas(eW, eH);
         GraphicsContext gce = cvEckert.getGraphicsContext2D();
-        gcm.setStroke(Color.RED);
-        gcm.setLineWidth(2);
-        gce.setStroke(Color.RED);
-        gce.setLineWidth(2);
-        for (EarthquakeSimple q : quakeList) {
+        gcm.setStroke(Color.rgb(252,1,10,0.8));
+        gcm.setLineWidth(1.8);
+        gce.setStroke(Color.rgb(238,48,1,0.8));
+        gce.setLineWidth(1.8);
+        int diameter;
+        int[] xy;
+        for (Earthquake q : quakeList) {
             diameter = (int) (5 * q.getMagnitude() - 4);
             xy = wmm.imgxy(q.getLatitude(), q.getLongitude());
             gcm.strokeOval(xy[0] - diameter / 2, xy[1] - diameter / 2, diameter, diameter);
+
             xy = wme.imgxy(q.getLatitude(), q.getLongitude());
             gce.strokeOval(xy[0] - diameter / 2, xy[1] - diameter / 2, diameter, diameter);
         }

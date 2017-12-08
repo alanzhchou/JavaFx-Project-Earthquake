@@ -44,8 +44,8 @@ public class WholeFilterController implements FilterLikeController{
     public boolean test(Earthquake earthquake){
         return timestempDoubleFilterService.fileSystemDoubleFilter(earthquake.getUTC_date(),dateFrom,dateTo)&&
                 floatDoubleFilterService.fileSystemDoubleFilter(earthquake.getLatitude(),latitudeMin,latitudeMax)&&
-                floatDoubleFilterService.fileSystemDoubleFilter(earthquake.getLatitude(),longitudeMin,longitudeMax)&&
-                floatDoubleFilterService.fileSystemDoubleFilter(earthquake.getLatitude(),depthMin,depthMax)&&
-                floatDoubleFilterService.fileSystemDoubleFilter(earthquake.getLatitude(),magnitudeMin,magnitudeMax);
+                floatDoubleFilterService.fileSystemDoubleFilter(earthquake.getLongitude(),longitudeMin,longitudeMax)&&
+                floatDoubleFilterService.fileSystemDoubleFilter(earthquake.getDepth(),depthMin,depthMax)&&
+                floatDoubleFilterService.fileSystemDoubleFilter(earthquake.getMagnitude(),magnitudeMin,magnitudeMax);
     }
 }

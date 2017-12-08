@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.canvas.*?>
@@ -9,44 +13,155 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="792.0" prefWidth="1127.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UnitControlList">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="901.0" prefWidth="1127.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UnitControlList">
 	<children>
-      <Pane prefHeight="251.0" prefWidth="960.0">
+      <Pane prefHeight="251.0" prefWidth="960.0" style="-fx-background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1512775738437&amp;di=5b5e422905f20204747d14e3038a9284&amp;imgtype=0&amp;src=http%3A%2F%2Fimg1.juimg.com%2F160118%2F330731-16011QP12121.jpg);">
          <children>
-            <Label layoutX="154.0" layoutY="10.0" text="From:" />
-            <Label layoutX="337.0" layoutY="10.0" text="To:" />
-            <Label layoutX="19.0" layoutY="45.0" text="Date" />
-            <DatePicker fx:id="dateFromDatePicker" layoutX="131.0" layoutY="40.0" prefHeight="30.0" prefWidth="147.0" />
-            <DatePicker fx:id="dateToDatePicker" layoutX="295.0" layoutY="40.0" prefHeight="30.0" prefWidth="147.0" />
-            <Label layoutX="21.0" layoutY="128.0" text="Longitude" />
-            <TextField fx:id="longitudeMinText" layoutX="133.0" layoutY="123.0" prefHeight="30.0" prefWidth="92.0" />
-            <TextField fx:id="longitudeMaxText" layoutX="297.0" layoutY="123.0" prefHeight="30.0" prefWidth="92.0" />
-            <Label layoutX="21.0" layoutY="85.0" text="Latitude" />
-            <TextField fx:id="latitudeMaxText" layoutX="297.0" layoutY="80.0" prefHeight="30.0" prefWidth="92.0" />
-            <TextField fx:id="latitudeMinText" layoutX="133.0" layoutY="80.0" prefHeight="30.0" prefWidth="92.0" />
-            <Label layoutX="19.0" layoutY="164.0" text="Depth" />
-            <TextField fx:id="depthMaxText" layoutX="295.0" layoutY="159.0" prefHeight="30.0" prefWidth="92.0" />
-            <TextField fx:id="depthMinText" layoutX="131.0" layoutY="159.0" prefHeight="30.0" prefWidth="92.0" />
-            <Label layoutX="19.0" layoutY="206.0" text="Magnitude" />
-            <TextField fx:id="magnitudeMaxText" layoutX="295.0" layoutY="201.0" prefHeight="30.0" prefWidth="92.0" />
-            <TextField fx:id="magnitudeMinText" layoutX="131.0" layoutY="201.0" prefHeight="30.0" prefWidth="92.0" />
-      		<Button fx:id="searchButton" layoutX="499.0" layoutY="201.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="30.0" prefWidth="103.0" text="Search" />
+      		<Button fx:id="searchButton" alignment="CENTER" defaultButton="true" layoutX="927.0" layoutY="161.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="60.0" prefWidth="147.0" text="Search" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#1fc4a9" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Pane layoutX="87.0" layoutY="-22.0" prefHeight="273.0" prefWidth="779.0">
+               <children>
+                  <DatePicker fx:id="dateFromDatePicker" layoutX="148.0" layoutY="68.0" prefHeight="30.0" prefWidth="147.0" promptText="2017-10-14" />
+                  <DatePicker fx:id="dateToDatePicker" layoutX="418.0" layoutY="72.0" prefHeight="30.0" prefWidth="147.0" promptText="2017.10.30" />
+                  <TextField fx:id="longitudeMinText" layoutX="148.0" layoutY="142.0" prefHeight="30.0" prefWidth="147.0" />
+                  <TextField fx:id="longitudeMaxText" layoutX="418.0" layoutY="146.0" prefHeight="20.0" prefWidth="147.0" />
+                  <TextField fx:id="latitudeMaxText" layoutX="418.0" layoutY="109.0" prefHeight="30.0" prefWidth="147.0" />
+                  <TextField fx:id="latitudeMinText" layoutX="148.0" layoutY="105.0" prefHeight="30.0" prefWidth="147.0" />
+                  <TextField fx:id="depthMaxText" layoutX="418.0" layoutY="187.0" prefHeight="28.0" prefWidth="147.0" />
+                  <TextField fx:id="depthMinText" layoutX="148.0" layoutY="183.0" prefHeight="30.0" prefWidth="147.0" />
+                  <GridPane alignment="CENTER" hgap="120.0" layoutX="148.0" layoutY="31.0" prefHeight="30.0" prefWidth="425.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="From">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0" startX="0.6747572815533981" startY="0.6407766990291263">
+                                 <stops>
+                                    <Stop color="#414f45" />
+                                    <Stop color="#8ae3c1" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label text="To" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0" startX="0.6747572815533981" startY="0.6407766990291263">
+                                 <stops>
+                                    <Stop color="#414f45" />
+                                    <Stop color="#8ae3c1" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="5.0" layoutX="-10.0" layoutY="39.0" prefHeight="237.0" prefWidth="162.0" vgap="5.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                     <children>
+                        <Label text="Longitude" textFill="#3e867f" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Magnitude" textFill="#bf5b5b" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Depth" textFill="#a8854a" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Latitude" textFill="#3e867f" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label lineSpacing="50.0" text="Date" textFill="WHITE">
+                           <font>
+                              <Font name="System Italic" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Slider fx:id="magnitudeMaxSd" blockIncrement="1.0" layoutX="422.0" layoutY="217.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" value="10.0" />
+                  <Slider fx:id="magnitudeMinSd" blockIncrement="1.0" layoutX="152.0" layoutY="217.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" />
+               </children>
+               <effect>
+                  <Blend />
+               </effect>
+            </Pane>
+            <Pane layoutX="885.0" layoutY="39.0" prefHeight="105.0" prefWidth="245.0">
+               <children>
+                  <ToggleButton layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" selected="true" text="File" textFill="#838080">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="source" />
+                     </toggleGroup>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </ToggleButton>
+                  <ToggleButton layoutX="139.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" text="Database" textFill="#08bfcf" toggleGroup="$source">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </ToggleButton>
+                  <Hyperlink layoutX="65.0" layoutY="63.0" text="WebView: URL" />
+               </children>
+            </Pane>
          </children>
       </Pane>
-      <TabPane prefHeight="550.0" prefWidth="1127.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="640.0" prefWidth="1127.0" style="-fx-background-color: #DDDDDD;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="TableView">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                  		<TableView fx:id="table" layoutX="9.0" prefHeight="495.0" prefWidth="1106.0">
+                  		<TableView fx:id="table" layoutX="9.0" prefHeight="594.0" prefWidth="1114.0" style="-fx-background-color: #aaaaaa;">
                   			<columns>
-                  				<TableColumn fx:id="dateColumn" prefWidth="196.0" text="Date" />
-                  				<TableColumn fx:id="latitudeColumn" prefWidth="107.0" text="Latitude" />
-                  				<TableColumn fx:id="longitudeColumn" prefWidth="138.0" text="Longitude" />
-                  				<TableColumn fx:id="depthColumn" prefWidth="123.0" text="Depth" />
-                  				<TableColumn fx:id="magnitudeColumn" prefWidth="184.0" text="Magnitude" />
-                  				<TableColumn fx:id="regionColumn" prefWidth="353.0" text="Region" />
+                              <TableColumn fx:id="idColumn" prefWidth="86.0" text="Id" />
+                  				<TableColumn fx:id="dateColumn" prefWidth="211.0" text="Date" />
+                  				<TableColumn fx:id="latitudeColumn" prefWidth="120.0" text="Latitude" />
+                  				<TableColumn fx:id="longitudeColumn" prefWidth="108.0" text="Longitude" />
+                  				<TableColumn fx:id="depthColumn" prefWidth="82.0" text="Depth" />
+                  				<TableColumn fx:id="magnitudeColumn" prefWidth="90.0" text="Magnitude" />
+                  				<TableColumn fx:id="regionColumn" prefWidth="406.0" text="Region" />
                   			</columns>
                   		</TableView>
                      </children>
@@ -55,13 +170,13 @@
           </Tab>
           <Tab text="Mercator Map">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="457.0" prefWidth="1127.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="578.0" prefWidth="1127.0" style="-fx-background-color: #aaaaaa;">
                      <children>
-                        <VBox layoutX="217.0" layoutY="23.0" prefHeight="200.0" prefWidth="100.0">
+                        <VBox layoutX="114.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <StackPane fx:id="stpMercator" prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="imageMERCATOR" fitHeight="462.0" fitWidth="716.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="imageMERCATOR" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../Mercator.jpg" />
                                        </image>
@@ -76,13 +191,13 @@
           </Tab>
             <Tab text="Eckert_IV Map">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="113.0" prefWidth="1007.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="578.0" prefWidth="1127.0" style="-fx-background-color: #aaaaaa;">
                      <children>
-                        <VBox alignment="TOP_CENTER" layoutX="114.0" layoutY="28.0" prefHeight="200.0" prefWidth="100.0">
+                        <VBox layoutX="63.0" layoutY="41.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <StackPane fx:id="stpEckert" prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="imageEckertIV" fitHeight="477.0" fitWidth="899.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="imageEckertIV" fitHeight="502.0" fitWidth="1001.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../Eckert_IV.png" />
                                        </image>

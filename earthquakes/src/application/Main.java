@@ -11,7 +11,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("MainUI.fxml"));
-			primaryStage.setTitle("My Application");
+			primaryStage.setTitle("EarthQuake View");
 
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();

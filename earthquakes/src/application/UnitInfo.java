@@ -1,7 +1,7 @@
 package application;
 
-import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 import java.sql.Timestamp;
@@ -22,12 +22,12 @@ public class UnitInfo {
     private TextField longitudeMaxText;
     private TextField depthMinText;
     private TextField depthMaxText;
-    private TextField magnitudeMinText;
-    private TextField magnitudeMaxText;
+    private Slider magnitudeMinSd;
+    private Slider magnitudeMaxSd;
 
     public UnitInfo(DatePicker dateFromDatePicker, DatePicker dateToDatePicker,
-                    TextField latitudeMinText,TextField latitudeMaxText,TextField longitudeMinText,TextField longitudeMaxText,
-                    TextField depthMinText,TextField depthMaxText,TextField magnitudeMinText,TextField magnitudeMaxText){
+                    TextField latitudeMinText, TextField latitudeMaxText, TextField longitudeMinText, TextField longitudeMaxText,
+                    TextField depthMinText, TextField depthMaxText, Slider magnitudeMinSd, Slider magnitudeMaxSd){
         this.dateFromDatePicker = dateFromDatePicker;
         this.dateToDatePicker = dateToDatePicker;
         this.latitudeMinText = latitudeMinText;
@@ -36,41 +36,38 @@ public class UnitInfo {
         this.longitudeMaxText = longitudeMaxText;
         this.depthMinText = depthMinText;
         this.depthMaxText = depthMaxText;
-        this.magnitudeMinText = magnitudeMinText;
-        this.magnitudeMaxText = magnitudeMaxText;
+        this.magnitudeMinSd = magnitudeMinSd;
+        this.magnitudeMaxSd = magnitudeMaxSd;
     }
 
     public HashMap<String,Object> getAllinfo(){
         Timestamp dateFrom = (dateFromDatePicker.getValue() != null)
-                //Timestamp.valueOf("1970-01-01 00:00:00.0")
-                ? Timestamp.valueOf(dateFromDatePicker.getValue().atTime(0, 0, 0)): Timestamp.valueOf(LocalDateTime.now());
+                ? Timestamp.valueOf(dateFromDatePicker.getValue().atTime(0, 0, 0)): Timestamp.valueOf("2017-10-01 00:00:00.0");
 
         Timestamp dateTo = (dateToDatePicker.getValue() != null)
                 ? Timestamp.valueOf(dateToDatePicker.getValue().atTime(23, 59, 59)): Timestamp.valueOf(LocalDateTime.now());
 
         float latitudeMax = (latitudeMaxText.getText() != null && !latitudeMaxText.getText().isEmpty())
-                ? latitudeMax = Float.parseFloat(latitudeMaxText.getText()): 90;
+                ? Float.parseFloat(latitudeMaxText.getText()): 90f;
 
         float latitudeMin = (latitudeMinText.getText() != null && !latitudeMinText.getText().isEmpty())
-                ? Float.parseFloat(latitudeMinText.getText()): -90;
+                ? Float.parseFloat(latitudeMinText.getText()): -90f;
 
         float longitudeMax = (longitudeMaxText.getText() != null && !longitudeMaxText.getText().isEmpty())
-                ? Float.parseFloat(longitudeMaxText.getText()): 180;
+                ? Float.parseFloat(longitudeMaxText.getText()): 180f;
 
         float longitudeMin = (longitudeMinText.getText() != null && !longitudeMinText.getText().isEmpty())
-                ? Float.parseFloat(longitudeMinText.getText()): -180;
+                ? Float.parseFloat(longitudeMinText.getText()): -180f;
 
         float depthMax = (depthMaxText.getText() != null && !depthMaxText.getText().isEmpty())
-                ? Float.parseFloat(depthMaxText.getText()): Float.MAX_VALUE;
+                ? Float.parseFloat(depthMaxText.getText()): 1000f;
 
         float depthMin = (depthMinText.getText() != null && !depthMinText.getText().isEmpty())
-                ? Float.parseFloat(depthMinText.getText()): 0;
+                ? Float.parseFloat(depthMinText.getText()): 0f;
 
-        float magnitudeMax = (magnitudeMaxText.getText() != null && !magnitudeMaxText.getText().isEmpty())
-                ? Float.parseFloat(magnitudeMaxText.getText()): Float.MAX_VALUE;
+        float magnitudeMax = (float) magnitudeMaxSd.getValue();
 
-        float magnitudeMin = (magnitudeMinText.getText() != null && !magnitudeMinText.getText().isEmpty())
-                ? Float.parseFloat(magnitudeMinText.getText()): 0;
+        float magnitudeMin = (float) magnitudeMinSd.getValue();
 
         HashMap<String,Object> info = new HashMap<String,Object>();
         info.put("dateFrom",dateFrom);

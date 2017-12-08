@@ -25,9 +25,6 @@ public class Earthquake {
 		this.magnitude = magnitude;
 		this.region = region;
 	}
-	public SimpleStringProperty latitudeProperty(){
-		return new SimpleStringProperty(Float.toString(latitude));
-	}
 
 	public int getId() {
 		return id;

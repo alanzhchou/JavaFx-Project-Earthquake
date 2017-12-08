@@ -19,7 +19,7 @@ public class FloatDoubleFilterService implements DoubleValuesFilter {
     }
 
     public Boolean fileSystemDoubleFilter(float earthquake, float Min, float Max) {
-        return earthquake > Min && earthquake < Max;
+        return earthquake >= Min && earthquake <= Max;
     }
 
     public ArrayList<String> databaseDoubleFilter(float Min, float Max) {

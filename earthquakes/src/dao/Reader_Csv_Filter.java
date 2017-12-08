@@ -27,12 +27,12 @@ public class Reader_Csv_Filter implements Reader{
 				String str[] = line.split(",");
 				Earthquake earthquake = new Earthquake();
 				earthquake.setId(Integer.parseInt(str[0]));
-				earthquake.setUTC_date(Timestamp.valueOf(str[1].substring(1, 22)));
+				earthquake.setUTC_date(Timestamp.valueOf(str[1].replaceAll("\"","")));
 				earthquake.setLatitude(Float.parseFloat(str[2]));
 				earthquake.setLongitude(Float.parseFloat(str[3]));
 				earthquake.setDepth(Float.parseFloat(str[4]));
 				earthquake.setMagnitude(Float.parseFloat(str[5]));
-				earthquake.setRegion(str[6]);
+				earthquake.setRegion(str[6].replaceAll("\"",""));
 				if (filter.test(earthquake)){
 					earthquakeList.add(earthquake);
 				}
