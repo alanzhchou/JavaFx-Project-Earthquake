@@ -1,9 +1,5 @@
 package service;
 
-import bean.Earthquake;
-
-import java.util.ArrayList;
-
 /**
  * Author ZH-AlanChou
  * Date: 2017/12/7.

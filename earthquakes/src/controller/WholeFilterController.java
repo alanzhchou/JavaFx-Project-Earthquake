@@ -1,8 +1,10 @@
 package controller;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import bean.Earthquake;
+import dao.Reader_Csv_Filter;
 import service.*;
 /**
  * Author ZH-AlanChou
@@ -39,6 +41,10 @@ public class WholeFilterController implements FilterLikeController{
         this.depthMax = depthMax;
         this.magnitudeMin = magnitudeMin;
         this.magnitudeMax = magnitudeMax;
+    }
+
+    public ArrayList<Earthquake> getEarthquakeList(){
+        return new Reader_Csv_Filter().getEarthquakeList(this);
     }
 
     public boolean test(Earthquake earthquake){

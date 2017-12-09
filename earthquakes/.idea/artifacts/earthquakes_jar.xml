@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="earthquakes:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/earthquakes_jar</output-path>
+    <root id="archive" name="earthquakes.jar">
+      <element id="module-output" name="earthquakes" />
+    </root>
+  </artifact>
+</component>

@@ -1,7 +1,5 @@
 package bean;
 
-import javafx.beans.property.SimpleStringProperty;
-
 import java.sql.Timestamp;
 
 public class Earthquake {

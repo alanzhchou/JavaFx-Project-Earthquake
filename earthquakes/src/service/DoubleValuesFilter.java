@@ -1,8 +1,5 @@
 package service;
 
-import bean.Earthquake;
-
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**

@@ -13,7 +13,7 @@ import bean.Earthquake;
  * Version 1.0
  */
 public class Read_Cvs_All implements Reader {
-    private String dataSrc = "earthquakes.csv";
+    private String dataSrc = this.getClass().getResource("../dataSource/earthquakes.csv").getPath();
 
     @Override
     public ArrayList<Earthquake> getEarthquakeList() {
