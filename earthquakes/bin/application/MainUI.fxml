@@ -156,7 +156,7 @@
                   		<TableView fx:id="table" layoutX="9.0" prefHeight="594.0" prefWidth="1114.0" style="-fx-background-color: #aaaaaa;">
                   			<columns>
                               <TableColumn fx:id="idColumn" prefWidth="86.0" text="Id" />
-                  				<TableColumn fx:id="dateColumn" prefWidth="211.0" text="Date" />
+                  				<TableColumn fx:id="dateColumn" prefWidth="211.0" text="UTC_date" />
                   				<TableColumn fx:id="latitudeColumn" prefWidth="120.0" text="Latitude" />
                   				<TableColumn fx:id="longitudeColumn" prefWidth="108.0" text="Longitude" />
                   				<TableColumn fx:id="depthColumn" prefWidth="82.0" text="Depth" />

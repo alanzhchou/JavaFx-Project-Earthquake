@@ -149,7 +149,6 @@ public class WorldMap {
         return xy;
     }
 
-
     private double[] getMercatorXY(double lambda, double phi) {
         double[] coordinates = new double[2];
         coordinates[0] = (pixelWidth / 2.0 / Math.PI) * lambda;

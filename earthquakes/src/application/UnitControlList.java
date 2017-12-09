@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -20,6 +19,7 @@ import java.util.HashMap;
 import bean.Earthquake;
 import controller.WholeFilterController;
 import dao.Reader_Csv_Filter;
+import controller.TableController;
 
 /**
  * Author ZH-AlanChou
@@ -50,20 +50,6 @@ public class UnitControlList {
     @FXML
     private TableView<Earthquake> table;
     @FXML
-    private TableColumn<Earthquake, Integer> idColumn;
-    @FXML
-    private TableColumn<Earthquake, Timestamp> dateColumn;
-    @FXML
-    private TableColumn<Earthquake, Float> latitudeColumn;
-    @FXML
-    private TableColumn<Earthquake, Float> longitudeColumn;
-    @FXML
-    private TableColumn<Earthquake, Float> depthColumn;
-    @FXML
-    private TableColumn<Earthquake, Float> magnitudeColumn;
-    @FXML
-    private TableColumn<Earthquake, String> regionColumn;
-    @FXML
     private StackPane stpMercator;
     @FXML
     private ImageView imageMERCATOR;
@@ -82,7 +68,8 @@ public class UnitControlList {
 
     static ObservableList<Earthquake> quakeList = FXCollections.observableArrayList();
     static WholeFilterController wholeFilter = new WholeFilterController();
-    UnitInfo unitInfo;
+    TableController<Earthquake> tableController = null;
+    UnitInfo unitInfo = null;
 
     public void checkUnitInfo(){
         if (unitInfo == null){
@@ -94,6 +81,7 @@ public class UnitControlList {
             mH = (int) imageMERCATOR.getImage().getHeight();
             eW = (int) imageEckertIV.getImage().getWidth();
             eH = (int) imageEckertIV.getImage().getHeight();
+            this.tableController = new TableController<Earthquake>(this.table);
         }
     }
 
@@ -115,14 +103,7 @@ public class UnitControlList {
         for (Earthquake q : earthquakes) {
             quakeList.add(q);
         }
-        idColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Integer>("id"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Timestamp>("UTC_date"));
-        latitudeColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Float>("latitude"));
-        longitudeColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Float>("longitude"));
-        depthColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Float>("depth"));
-        magnitudeColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, Float>("magnitude"));
-        regionColumn.setCellValueFactory(new PropertyValueFactory<Earthquake, String>("region"));
-        table.setItems(quakeList);
+        this.tableController.refresh(quakeList);
     }
 
     private void refreshMaps() {
