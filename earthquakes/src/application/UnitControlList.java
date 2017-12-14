@@ -1,6 +1,8 @@
 package application;
 
 import controller.MapStackPaneController;
+import controller.ToggleGroupController;
+import dao.Reader_Database_filter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -48,14 +50,23 @@ public class UnitControlList {
     private StackPane stpMercator;
     @FXML
     private StackPane stpEckert;
+    @FXML
+    private ToggleGroup source;
 
     static ObservableList<Earthquake> quakeList = FXCollections.observableArrayList();
-    ArrayList<Earthquake> earthquakes = null;
     static WholeFilterController wholeFilter = new WholeFilterController();
+
+    ArrayList<Earthquake> earthquakes = null;
+
+    UnitInfo unitInfo = null;
+
     TableController<Earthquake> tableController = null;
     MapStackPaneController mapControllerMERCATOR = null;
     MapStackPaneController mapControllerECKERT_IV = null;
-    UnitInfo unitInfo = null;
+    ToggleGroupController toggleGroupController = null;
+
+    public UnitControlList() {
+    }
 
     public void initUnits(){
         if (unitInfo == null){
@@ -64,6 +75,7 @@ public class UnitControlList {
             this.tableController = new TableController<Earthquake>(this.table);
             this.mapControllerMERCATOR = new MapStackPaneController(stpMercator,"MERCATOR");
             this.mapControllerECKERT_IV = new MapStackPaneController(stpEckert,"ECKERT_IV");
+            this.toggleGroupController = new ToggleGroupController(source);
         }
     }
 
@@ -72,7 +84,11 @@ public class UnitControlList {
         wholeFilter.setValues((Timestamp) info.get("dateFrom"), (Timestamp)info.get("dateTo"), (float)info.get("latitudeMin"), (float)info.get("latitudeMax"),
                 (float)info.get("longitudeMin"),(float)info.get("longitudeMax"), (float)info.get("depthMin"), (float)info.get("depthMax"),
                 (float)info.get("magnitudeMin"), (float)info.get("magnitudeMax"));
-        earthquakes = wholeFilter.getEarthquakeList();
+        if (toggleGroupController.getSelected().equals("File")){
+            earthquakes = wholeFilter.getEarthquakeListFromFile();
+        }else if (toggleGroupController.getSelected().equals("Database")){
+            earthquakes = wholeFilter.getEarthquakeListFromDB();
+        }
         quakeList.clear();
         for (Earthquake q : earthquakes) {
             quakeList.add(q);

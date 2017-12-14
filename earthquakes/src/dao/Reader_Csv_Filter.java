@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -12,7 +11,7 @@ import bean.Earthquake;
 import controller.FilterLikeController;
 
 public class Reader_Csv_Filter implements Reader{
-	private String streamSrc = "/dataSource/earthquakes.csv";
+	private String fileSource = "earthquakes.csv";
 	private ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
 
 	@Override
@@ -23,7 +22,7 @@ public class Reader_Csv_Filter implements Reader{
 	public ArrayList<Earthquake> getEarthquakeList(FilterLikeController filter) {
 		try {
 			earthquakeList.clear();
-			InputStream in = this.getClass().getResourceAsStream(streamSrc);
+			InputStream in = new FileInputStream(fileSource);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String line = br.readLine();
 			while ((line = br.readLine()) != null) {

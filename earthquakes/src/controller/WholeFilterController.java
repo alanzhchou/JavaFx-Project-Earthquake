@@ -2,9 +2,12 @@ package controller;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import bean.Earthquake;
 import dao.Reader_Csv_Filter;
+import dao.Reader_Database_filter;
 import service.*;
 /**
  * Author ZH-AlanChou
@@ -43,8 +46,28 @@ public class WholeFilterController implements FilterLikeController{
         this.magnitudeMax = magnitudeMax;
     }
 
-    public ArrayList<Earthquake> getEarthquakeList(){
+    public ArrayList<Earthquake> getEarthquakeListFromFile(){
         return new Reader_Csv_Filter().getEarthquakeList(this);
+    }
+
+
+    public ArrayList<Earthquake> getEarthquakeListFromDB(){
+        return new Reader_Database_filter().getEarthquakeList(this);
+    }
+
+    public HashMap<String,Object> test(){
+        Map<String,Object> conditions = new HashMap<String, Object>();
+        conditions.put("dateFrom",dateFrom);
+        conditions.put("dateTo",dateTo);
+        conditions.put("latitudeMax",latitudeMax);
+        conditions.put("latitudeMin",latitudeMin);
+        conditions.put("longitudeMax",longitudeMax);
+        conditions.put("longitudeMin",longitudeMin);
+        conditions.put("depthMax",depthMax);
+        conditions.put("depthMin",depthMin);
+        conditions.put("magnitudeMax",magnitudeMax);
+        conditions.put("magnitudeMin",magnitudeMin);
+        return (HashMap<String, Object>) conditions;
     }
 
     public boolean test(Earthquake earthquake){

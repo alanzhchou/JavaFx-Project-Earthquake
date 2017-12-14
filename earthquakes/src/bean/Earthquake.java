@@ -14,7 +14,7 @@ public class Earthquake {
 	public Earthquake() {
 	}
 
-	public Earthquake(int id, Timestamp uTC_date, float latitude, float longitude, float depth, float magnitude,String region) {
+	public Earthquake(int id, Timestamp uTC_date, float latitude, float longitude, float depth, float magnitude,String region){
 		this.id = id;
 		this.UTC_date = uTC_date;
 		this.latitude = latitude;
@@ -36,8 +36,8 @@ public class Earthquake {
 		return UTC_date;
 	}
 
-	public void setUTC_date(Timestamp uTC_date) {
-		UTC_date = uTC_date;
+	public void setUTC_date(Timestamp uTC_date) throws java.lang.IllegalArgumentException {
+		this.UTC_date = uTC_date;
 	}
 
 	public float getLatitude() {

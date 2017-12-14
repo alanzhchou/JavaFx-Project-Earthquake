@@ -1,1 +1,0 @@
-java -jar earthquakes.jar
