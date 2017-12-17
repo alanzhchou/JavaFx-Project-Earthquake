@@ -50,7 +50,6 @@ public class WholeFilterController implements FilterLikeController{
         return new Reader_Csv_Filter().getEarthquakeList(this);
     }
 
-
     public ArrayList<Earthquake> getEarthquakeListFromDB(){
         return new Reader_Database_filter().getEarthquakeList(this);
     }

@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
+	<title>EarthQuakes_View_3d</title>
+	<link rel="stylesheet"  href="css/datetimepicker.css" />
+	<link rel="stylesheet"  href="css/range.css" />
+	<link rel="stylesheet"  href="css/quakes.css" />
+	<script th:src="@{js/basic_js/jquery-1.7.2.min.js}"></script>
+	<script th:src="@{js/basic_js/jquery-ui.min.js}"></script>
+	<script th:src="@{js/basic_js/requestanimationframe.polyfill.js}"></script>
+	<script th:src="@{js/sphere-hacked.js}"></script>
+	<script th:src="@{js/jquery.range.js}"></script>
+	<script th:src="@{js/jquery.earth-3d.js}"></script>
+	<script th:src="@{js/jquery.datetimepicker.full.min.js}"></script>
+	<script th:src="@{js/quakes.js}"></script>
+</head>
+
+<body>
+	<div id="form_tog">
+		<button>隐藏参数</button>
+	</div>
+	<div class="condition_choose">
+		<form class="searchForm">
+			<p class="prop">
+				<span class="prop_title">开始时间</span>
+				<input type="text" class="my_datePickers" id="dateFrom" value="" />
+			</p>
+			<p class="prop">
+				<span class="prop_title">终止时间</span>
+				<input type="text" class="my_datePickers" id="dateTo" value="" />
+			</p>
+
+			<p class="prop">
+				<span class="prop_title">经度(角度)</span>
+				<input class="range-slider my_lonPicker" id="lon" type="hidden" value="-180,135" />
+			</p>
+
+			<p class="prop">
+				<span class="prop_title">纬度(角度)</span>
+				<input class="range-slider my_latPicker" id="lat" type="hidden" value="-90,60" />
+			</p>
+
+			<p class="prop">
+				<span class="prop_title">深度(km)</span>
+				<input class="range-slider my_depthPicker" id="depth" type="hidden" value="0,800" />
+			</p>
+
+			<p class="prop">
+				<span class="prop_title">震级(里氏)</span>
+				<input class="range-slider my_magPicker" id="mag" type="hidden" value="0,8" />
+			</p>
+			<button id="searchBtn">search</button>
+		</form>
+	</div>
+	<div id="showoff">
+		<div id="container">
+			<canvas id="sphere"></canvas>
+			<div id="glow-shadows" class="earth"></div>
+			<div id="locations"></div>
+		</div>
+	</div>
+</body>
+</html>

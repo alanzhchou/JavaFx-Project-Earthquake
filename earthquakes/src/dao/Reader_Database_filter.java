@@ -2,10 +2,10 @@ package dao;
 
 import bean.Earthquake;
 import controller.FilterLikeController;
+import service.FilterSqlFixer;
 
 import java.util.ArrayList;
 import java.sql.*;
-import java.util.HashMap;
 
 /**
  * Author ZH-AlanChou
@@ -19,6 +19,7 @@ public class Reader_Database_filter implements Reader {
     private String sql = "select * FROM quakes";
 
     private ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
+    private FilterSqlFixer fixer = new FilterSqlFixer();
 
     @Override
     public ArrayList<Earthquake> getEarthquakeList() {
@@ -26,7 +27,7 @@ public class Reader_Database_filter implements Reader {
     }
 
     public ArrayList<Earthquake> getEarthquakeList(FilterLikeController filter){
-        String fixedSql = fixSql(sql,filter.test());
+        String fixedSql = fixer.fix(sql,filter.test());
         try{
             Class.forName(databaseType);
 
@@ -57,21 +58,5 @@ public class Reader_Database_filter implements Reader {
             e.printStackTrace();
         }
         return earthquakeList;
-    }
-
-    private String fixSql(String originSql,HashMap<String,Object> filterTest){
-        StringBuffer conditions = new StringBuffer(" where ");
-        for (String key:filterTest.keySet()){
-            if (key.contains("Min")){
-                conditions.append(key.replaceAll("Min","") + ">=" + filterTest.get(key) + " and ");
-            }else if (key.contains("From")){
-                conditions.append("UTC_date" + ">=\"" + filterTest.get(key) + "\" and ");
-            }else if (key.contains("Max")){
-                conditions.append(key.replaceAll("Max","") + "<=" + filterTest.get(key) + " and ");
-            }else if (key.contains("To")){
-                conditions.append("UTC_date" + "<=\"" + filterTest.get(key) + "\" and ");
-            }
-        }
-        return originSql + conditions.delete(conditions.length()-4,conditions.length()-1) + ";";
     }
 }
