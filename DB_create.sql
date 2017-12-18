@@ -1,4 +1,4 @@
-CREATE TABLE plate_areas(id       integer primary key,
+CREATE TABLE plate_areas(id       integer primary key AUTOINCREMENT,
                          plate1   char(2) not null,
                          plate2   char(2) not null,
                          position varchar(25),

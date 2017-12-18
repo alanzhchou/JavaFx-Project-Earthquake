@@ -2,7 +2,6 @@ package application;
 
 import controller.MapStackPaneController;
 import controller.ToggleGroupController;
-import dao.Reader_Database_filter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
