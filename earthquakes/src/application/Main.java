@@ -6,7 +6,15 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+/**
+ * @Author: Alan
+ * @since : Java_8_151
+ * @version: 1.0
+ */
 public class Main extends Application {
+	/**
+	 * @param primaryStage
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -20,6 +28,10 @@ public class Main extends Application {
 		}
 	}
 
+	/**
+	 * main entrance
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

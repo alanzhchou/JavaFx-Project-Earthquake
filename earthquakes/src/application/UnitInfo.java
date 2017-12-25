@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 /**
- * Author ZH-AlanChou
- * Date: 2017/12/8.
- * Version 1.0
+ * @Author: Alan
+ * @since : Java_8_151
+ * @version: 1.0
  */
 public class UnitInfo {
     private DatePicker dateFromDatePicker;
@@ -25,6 +25,18 @@ public class UnitInfo {
     private Slider magnitudeMinSd;
     private Slider magnitudeMaxSd;
 
+    /**
+     * @param dateFromDatePicker
+     * @param dateToDatePicker
+     * @param latitudeMinText
+     * @param latitudeMaxText
+     * @param longitudeMinText
+     * @param longitudeMaxText
+     * @param depthMinText
+     * @param depthMaxText
+     * @param magnitudeMinSd
+     * @param magnitudeMaxSd
+     */
     public UnitInfo(DatePicker dateFromDatePicker, DatePicker dateToDatePicker,
                     TextField latitudeMinText, TextField latitudeMaxText, TextField longitudeMinText, TextField longitudeMaxText,
                     TextField depthMinText, TextField depthMaxText, Slider magnitudeMinSd, Slider magnitudeMaxSd){
@@ -40,6 +52,9 @@ public class UnitInfo {
         this.magnitudeMaxSd = magnitudeMaxSd;
     }
 
+    /**
+     * @return the infomation HashMap of the choice checked by user
+     */
     public HashMap<String,Object> getAllinfo(){
         Timestamp dateFrom = (dateFromDatePicker.getValue() != null)
                 ? Timestamp.valueOf(dateFromDatePicker.getValue().atTime(0, 0, 0)): Timestamp.valueOf("2017-10-01 00:00:00.0");

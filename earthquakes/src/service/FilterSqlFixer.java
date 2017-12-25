@@ -3,12 +3,17 @@ package service;
 import java.util.HashMap;
 
 /**
- * __Author__: Alan
- * __date__: 2017/12/17
- * __version__: 1.0
+ * @Author: Alan
+ * @since : Java_8_151
+ * @version: 1.0
  */
-
 public class FilterSqlFixer implements SqlFixer {
+    /**
+     * fix some simple filter like sql command
+     * @param originSql  the original sql like "SELECT * FROM quakes"
+     * @param filterTest the infomation for DB system filter, like dateFrom, dateTo, mag...
+     * @return String, the completed sql command to get what we want from DB system, like ""SELECT * FROM quakes"where id=1"
+     */
     @Override
     public String fix(String originSql,HashMap<String,Object> filterTest){
         StringBuffer conditions = new StringBuffer(" where ");

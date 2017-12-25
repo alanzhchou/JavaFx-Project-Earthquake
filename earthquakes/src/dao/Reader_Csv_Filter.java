@@ -10,15 +10,40 @@ import java.util.ArrayList;
 import bean.Earthquake;
 import controller.FilterLikeController;
 
+/**
+ * @Author: Alan
+ * @since : Java_8_151
+ * @version: 1.0
+ */
 public class Reader_Csv_Filter implements Reader{
-	private String fileSource = "earthquakes.csv";
+	/**
+	 * the Csv file location
+	 */
+	private String fileSource;
+
+	/**
+	 * the information list of earthquake for upper layer
+	 */
 	private ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
 
+	public Reader_Csv_Filter(){
+		this.fileSource = DataSourceProp.getCsvLocation();
+	}
+
+	/**
+	 * no use, please overload this function
+	 * @return
+	 */
 	@Override
 	public ArrayList<Earthquake> getEarthquakeList() {
 		return null;
 	}
 
+	/**
+	 * get the required earthquake list from Csv file
+	 * @param filter a filter for DB system to get enough info to get correct list
+	 * @return ArrayList<Earthquake>, required earthquake list
+	 */
 	public ArrayList<Earthquake> getEarthquakeList(FilterLikeController filter) {
 		try {
 			earthquakeList.clear();

@@ -16,5 +16,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" exported="" name="sqlite-jdbc-3.16.1" level="application" />
     <orderEntry type="library" name="org.xerial:sqlite-jdbc:3.16.1" level="project" />
+    <orderEntry type="library" name="org.jsoup:jsoup:1.11.2" level="project" />
   </component>
 </module>

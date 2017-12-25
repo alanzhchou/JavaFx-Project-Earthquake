@@ -12,16 +12,39 @@ import javafx.scene.paint.Color;
 import bean.Earthquake;
 
 /**
- * Author ZH-AlanChou
- * Date: 2017/12/9.
- * Version 1.0
+ * @Author: Alan
+ * @since : Java_8_151
+ * @version: 1.0
  */
 public class MapStackPaneController implements ViewLikeController {
+    /**
+     * the StackPane contain the map
+     */
     private StackPane stackPane;
+
+    /**
+     * the type of the WorldMap
+     */
     private String mapType;
+
+    /**
+     * the WorldMap background image
+     */
     private ImageView imageView;
+
+    /**
+     * the background image width
+     */
     private int W;
+
+    /**
+     * the background image height
+     */
     private int H;
+
+    /**
+     * the WorldMap
+     */
     WorldMap worldMap;
 
     public MapStackPaneController(StackPane stackPane,String mapType){
@@ -33,11 +56,17 @@ public class MapStackPaneController implements ViewLikeController {
         worldMap = new WorldMap(imageView.getImage(), WorldMap.Projection.valueOf(mapType), 180);
     }
 
+    /**
+     * no use, please overload this function
+     */
     @Override
     public void refresh() {
-
     }
 
+    /**
+     * refresh the Map StackPane using given "ObservableList<Earthquake> quakeList"
+     * @param quakeList
+     */
     public void refresh(ObservableList<Earthquake> quakeList) {
         ObservableList<Node> paneChildren = stackPane.getChildren();
         if (paneChildren.size() > 1) {
@@ -57,6 +86,11 @@ public class MapStackPaneController implements ViewLikeController {
         stackPane.getChildren().add(cv);
     }
 
+    /**
+     * private details using for refresh
+     * @param quakeList given "ObservableList<Earthquake> quakeList" data for refresh Map
+     * @param gc the GraphicsContext where to draw all the shape
+     */
     private void refreshMERCATOR(ObservableList<Earthquake> quakeList,GraphicsContext gc) {
         int diameter;
         int[] xy;
@@ -67,6 +101,11 @@ public class MapStackPaneController implements ViewLikeController {
         }
     }
 
+    /**
+     * private details using for refresh
+     * @param quakeList given "ObservableList<Earthquake> quakeList" data for refresh Map
+     * @param gc the GraphicsContext where to draw all the shape
+     */
     private void refreshECKERT_IV(ObservableList<Earthquake> quakeList,GraphicsContext gc){
         int diameter;
         int[] xy;

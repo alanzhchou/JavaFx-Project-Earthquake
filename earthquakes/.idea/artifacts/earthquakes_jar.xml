@@ -3,7 +3,8 @@
     <output-path>$PROJECT_DIR$/classes/artifacts</output-path>
     <root id="archive" name="earthquakes.jar">
       <element id="module-output" name="earthquakes" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../../../sqlite-jdbc-3.16.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/xerial/sqlite-jdbc/3.16.1/sqlite-jdbc-3.16.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.11.2/jsoup-1.11.2.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

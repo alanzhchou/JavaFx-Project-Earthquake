@@ -14,17 +14,6 @@
 	<children>
       <Pane prefHeight="251.0" prefWidth="960.0" style="-fx-background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1513205751262&amp;di=28bef0c1e6595955bcd1348f6414f496&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F18%2F07%2F48%2F91d58PIC9xK_1024.jpg);">
          <children>
-      		<Button fx:id="searchButton" alignment="CENTER" defaultButton="true" layoutX="927.0" layoutY="161.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="60.0" prefWidth="147.0" text="Search" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
-               <font>
-                  <Font name="System Bold Italic" size="24.0" />
-               </font>
-               <effect>
-                  <DropShadow color="#1fc4a9" />
-               </effect>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
             <Pane layoutX="87.0" layoutY="-22.0" prefHeight="273.0" prefWidth="779.0">
                <children>
                   <DatePicker fx:id="dateFromDatePicker" layoutX="148.0" layoutY="68.0" prefHeight="30.0" prefWidth="147.0" promptText="2017-10-14" />
@@ -119,14 +108,30 @@
                   </GridPane>
                   <Slider fx:id="magnitudeMaxSd" blockIncrement="1.0" layoutX="422.0" layoutY="217.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" onMouseDragExited="#search" onMouseDragged="#search" showTickLabels="true" showTickMarks="true" value="10.0" />
                   <Slider fx:id="magnitudeMinSd" blockIncrement="1.0" layoutX="152.0" layoutY="217.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" onMouseDragExited="#search" onMouseDragged="#search" showTickLabels="true" showTickMarks="true" />
+            		<Button fx:id="searchButton" alignment="CENTER" defaultButton="true" layoutX="632.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="60.0" prefWidth="147.0" text="Search" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#1fc4a9" />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="counter" alignment="CENTER" layoutX="620.0" layoutY="66.0" prefHeight="43.0" prefWidth="171.0" text="0 selected" textFill="#32cf65">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
                <effect>
                   <Blend />
                </effect>
             </Pane>
-            <Pane layoutX="885.0" layoutY="39.0" prefHeight="105.0" prefWidth="245.0">
+            <Pane layoutX="866.0" layoutY="62.0" prefHeight="105.0" prefWidth="245.0">
                <children>
-                  <ToggleButton layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" selected="true" text="File" textFill="#838080">
+                  <ToggleButton layoutX="53.0" layoutY="82.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="140.0" text="spiderDatabse" textFill="#838080">
                      <toggleGroup>
                         <ToggleGroup fx:id="source" />
                      </toggleGroup>
@@ -134,14 +139,19 @@
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
                   </ToggleButton>
-                  <ToggleButton layoutX="139.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" text="Database" textFill="#08bfcf" toggleGroup="$source">
+                  <ToggleButton layoutX="77.0" layoutY="27.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" text="Database" textFill="#08bfcf" toggleGroup="$source">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
                   </ToggleButton>
-                  <Hyperlink layoutX="65.0" layoutY="63.0" text="WebView: URL" />
                </children>
             </Pane>
+            <Button fx:id="initSpider" layoutX="940.0" layoutY="197.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="98.0" text="initSpider" textFill="#d02626" />
+            <ToggleButton layoutX="943.0" layoutY="36.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" selected="true" text="File" textFill="#838080" toggleGroup="$source">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ToggleButton>
          </children>
       </Pane>
       <TabPane prefHeight="640.0" prefWidth="1127.0" style="-fx-background-color: #DDDDDD;" tabClosingPolicy="UNAVAILABLE">

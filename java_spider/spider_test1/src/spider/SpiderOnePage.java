@@ -17,6 +17,11 @@ import java.util.regex.Pattern;
 public class SpiderOnePage {
     private User_agents agents = new User_agents();
 
+    /**
+     * @param url
+     * @return
+     * @throws IOException
+     */
     public ArrayList<ArrayList> getOnePage(String url) throws IOException {
         ArrayList<ArrayList> onePage = new ArrayList<ArrayList>();
 

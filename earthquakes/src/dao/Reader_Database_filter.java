@@ -8,24 +8,61 @@ import java.util.ArrayList;
 import java.sql.*;
 
 /**
- * Author ZH-AlanChou
- * Date: 2017/12/7.
- * Version 1.0
+ * @Author: Alan
+ * @since : Java_8_151
+ * @version: 1.0
  */
+
 public class Reader_Database_filter implements Reader {
+    /**
+     * the databaseDriverType like "org.sqlite.JDBC"
+     */
     private String databaseType = "org.sqlite.JDBC";
-    private String databaseSource = "jdbc:sqlite:earthquakes.sqlite";
+
+
+    /**
+     * the Sqilte DB file location
+     */
+    private String databaseSource;
+
+    /**
+     *  the DB connection
+     */
     private Connection connection = null;
+
+    /**
+     *  some simple original sql command
+     */
     private String sql = "select * FROM quakes";
 
+    /**
+     * the information list of earthquake for upper layer
+     */
     private ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
+
+    /**
+     * util for fix some simple original sql command to completed sql
+     */
     private FilterSqlFixer fixer = new FilterSqlFixer();
 
+    public Reader_Database_filter(){
+        this.databaseSource = DataSourceProp.getDBLocation();
+    }
+
+    /**
+     * no use, please overload this function
+     * @return
+     */
     @Override
     public ArrayList<Earthquake> getEarthquakeList() {
         return null;
     }
 
+    /**
+     * get the required earthquake list from database
+     * @param filter a filter for DB system to get enough info to get correct list
+     * @return ArrayList<Earthquake>, required earthquake list
+     */
     public ArrayList<Earthquake> getEarthquakeList(FilterLikeController filter){
         String fixedSql = fixer.fix(sql,filter.test());
         try{

@@ -1,10 +1,13 @@
 package controller;
 
 /**
- * Author ZH-AlanChou
- * Date: 2017/12/9.
- * Version 1.0
+ * @Author: Alan
+ * @since : Java_8_151
+ * @version: 1.0
  */
 public interface ViewLikeController <T>{
+    /**
+     * refresh a ViewLike pane
+     */
     void refresh();
 }
