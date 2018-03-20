@@ -16,8 +16,8 @@
          <children>
             <Pane layoutX="87.0" layoutY="-22.0" prefHeight="273.0" prefWidth="779.0">
                <children>
-                  <DatePicker fx:id="dateFromDatePicker" layoutX="148.0" layoutY="68.0" prefHeight="30.0" prefWidth="147.0" promptText="2017-10-14" />
-                  <DatePicker fx:id="dateToDatePicker" layoutX="418.0" layoutY="72.0" prefHeight="30.0" prefWidth="147.0" promptText="2017.10.30" />
+                  <DatePicker fx:id="dateFromDatePicker" layoutX="148.0" layoutY="68.0" prefHeight="30.0" prefWidth="147.0" promptText="2017-10-01" />
+                  <DatePicker fx:id="dateToDatePicker" layoutX="418.0" layoutY="72.0" prefHeight="30.0" prefWidth="147.0" />
                   <TextField fx:id="longitudeMinText" layoutX="148.0" layoutY="142.0" prefHeight="30.0" prefWidth="147.0" />
                   <TextField fx:id="longitudeMaxText" layoutX="418.0" layoutY="146.0" prefHeight="20.0" prefWidth="147.0" />
                   <TextField fx:id="latitudeMaxText" layoutX="418.0" layoutY="109.0" prefHeight="30.0" prefWidth="147.0" />
