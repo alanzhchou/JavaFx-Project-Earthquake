@@ -16,9 +16,9 @@ lib
 *.properties
 *.exe
 
-jar_package_learning
-java_web_learning
-java_spider
+jar_learning
+web_learning
+spider
 
 web_utils
 brief
