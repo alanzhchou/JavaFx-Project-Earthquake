@@ -140,8 +140,11 @@ public class UnitControlList {
      */
     public void search(MouseEvent e) {
         HashMap info = unitInfo.getAllinfo();
-        wholeFilter.setValues((Timestamp) info.get("dateFrom"), (Timestamp)info.get("dateTo"), (float)info.get("latitudeMin"), (float)info.get("latitudeMax"),
-                (float)info.get("longitudeMin"),(float)info.get("longitudeMax"), (float)info.get("depthMin"), (float)info.get("depthMax"),
+        wholeFilter.setValues(
+                (Timestamp) info.get("dateFrom"), (Timestamp)info.get("dateTo"),
+                (float)info.get("latitudeMin"), (float)info.get("latitudeMax"),
+                (float)info.get("longitudeMin"),(float)info.get("longitudeMax"),
+                (float)info.get("depthMin"), (float)info.get("depthMax"),
                 (float)info.get("magnitudeMin"), (float)info.get("magnitudeMax"));
         if (toggleGroupController.getSelected().equals("File")){
             earthquakes = wholeFilter.getEarthquakeListFromFile();
