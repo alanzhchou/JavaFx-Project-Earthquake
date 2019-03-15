@@ -16,10 +16,4 @@ lib
 *.properties
 *.exe
 
-jar_learning
-web_learning
-spider
-
-web_utils
-brief
-web_static
+ignore
